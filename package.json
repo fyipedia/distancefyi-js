@@ -1,0 +1,48 @@
+{
+  "name": "distancefyi",
+  "version": "0.1.0",
+  "description": "Pure TypeScript distance engine -- Haversine great-circle distance, bearing, midpoint, travel time estimates, and unit conversions. Zero dependencies.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "distance",
+    "haversine",
+    "great-circle",
+    "bearing",
+    "compass",
+    "midpoint",
+    "geodesic",
+    "coordinates",
+    "latitude",
+    "longitude",
+    "flight-time",
+    "travel-time"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fyipedia/distancefyi-js"
+  },
+  "homepage": "https://distancefyi.com",
+  "license": "MIT",
+  "author": "FYIPedia",
+  "devDependencies": {
+    "tsup": "^8.0",
+    "typescript": "^5.7",
+    "vitest": "^3.0"
+  }
+}
