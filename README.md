@@ -9,6 +9,10 @@ Pure TypeScript distance engine for developers. Compute [Haversine great-circle 
 
 > **Try the interactive tools at [distancefyi.com](https://distancefyi.com/)** -- distance calculator, travel time estimator, and city-to-city comparisons.
 
+<p align="center">
+  <img src="demo.gif" alt="distancefyi demo — distance calculation and travel time estimation" width="800">
+</p>
+
 ## Install
 
 ```bash
