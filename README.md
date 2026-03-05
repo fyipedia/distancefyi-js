@@ -17,10 +17,11 @@ Pure TypeScript distance engine for developers. Compute [Haversine great-circle 
 
 - [Install](#install)
 - [Quick Start](#quick-start)
-- [Understanding Great-Circle Distance](#understanding-great-circle-distance)
-- [Bearing & Compass Direction](#bearing--compass-direction)
-- [Midpoint & Great Circle Arc](#midpoint--great-circle-arc)
-- [Travel Time Estimates](#travel-time-estimates)
+- [What You Can Do](#what-you-can-do)
+  - [Understanding Great-Circle Distance](#understanding-great-circle-distance)
+  - [Bearing & Compass Direction](#bearing--compass-direction)
+  - [Midpoint & Great Circle Arc](#midpoint--great-circle-arc)
+  - [Travel Time Estimates](#travel-time-estimates)
 - [API Reference](#api-reference)
 - [TypeScript Types](#typescript-types)
 - [Features](#features)
@@ -57,7 +58,9 @@ console.log(formatDistance(km));          // "5,570 km"
 console.log(formatDuration(420));        // "7h"
 ```
 
-## Understanding Great-Circle Distance
+## What You Can Do
+
+### Understanding Great-Circle Distance
 
 The Haversine formula calculates the shortest path over Earth's surface. Unlike Euclidean distance, it accounts for Earth's curvature using spherical trigonometry.
 
@@ -71,7 +74,11 @@ distance = R * c
 
 where R is Earth's mean radius (6,371.0088 km, WGS84). This gives accuracy within 0.5% for most practical distances. The implementation uses `Math.atan2` for numerical stability near antipodal points.
 
-## Bearing & Compass Direction
+Learn more: [Distance Calculator](https://distancefyi.com/) · [Haversine Formula](https://en.wikipedia.org/wiki/Haversine_formula) · [WGS84 Ellipsoid](https://en.wikipedia.org/wiki/World_Geodetic_System)
+
+### Bearing & Compass Direction
+
+The initial bearing (also called forward azimuth) is the compass direction you would need to travel in a straight line from point A to point B. It is measured in degrees clockwise from true north (0-360). The 16-point compass rose divides the circle into directions like N, NNE, NE, ENE, E, etc.
 
 ```typescript
 import { bearing, compassDirection, compassDirectionFull } from "distancefyi";
@@ -83,7 +90,11 @@ console.log(compassDirection(brng));     // "NE"
 console.log(compassDirectionFull(brng)); // "northeast"
 ```
 
-## Midpoint & Great Circle Arc
+Learn more: [Compass Direction Guide](https://distancefyi.com/) · [Bearing Calculator](https://distancefyi.com/)
+
+### Midpoint & Great Circle Arc
+
+The geographic midpoint between two locations is not simply the average of their coordinates -- it must account for Earth's curvature. The midpoint calculation converts to Cartesian coordinates, averages them, and converts back. Great circle arc points are intermediate coordinates along the shortest surface path, useful for rendering flight paths on maps.
 
 ```typescript
 import { midpoint, greatCirclePoints, antipodalPoint } from "distancefyi";
@@ -101,7 +112,17 @@ const [antiLat, antiLon] = antipodalPoint(40.7128, -74.006);
 console.log(antiLat, antiLon);  // -40.7128, 105.994
 ```
 
-## Travel Time Estimates
+Learn more: [Great Circle Paths](https://en.wikipedia.org/wiki/Great_circle) · [Antipodal Points](https://en.wikipedia.org/wiki/Antipodes)
+
+### Travel Time Estimates
+
+Estimate travel times for flights, driving, and walking based on distance. Flight time uses variable speed bands (shorter flights have lower average speeds due to takeoff/landing overhead). Drive time applies a 1.3x road distance factor to account for roads not following straight lines. Walking uses a constant 5 km/h speed with a 100 km maximum.
+
+| Mode | Speed Model | Overhead | Max Distance |
+|------|------------|----------|-------------|
+| **Flight** | Variable: 500-900 km/h by distance band | +30 min (taxi, takeoff, landing) | Unlimited |
+| **Drive** | 60 km/h avg + 1.3x road factor | None | Same continent only |
+| **Walk** | 5 km/h constant | None | 100 km |
 
 ```typescript
 import { estimateFlightTime, estimateDriveTime, estimateWalkTime, formatDuration } from "distancefyi";
@@ -118,6 +139,8 @@ console.log(estimateDriveTime(500, false));              // 0 (cross-ocean)
 console.log(formatDuration(estimateWalkTime(10)));       // "2h"
 console.log(estimateWalkTime(200));                      // 0 (too far)
 ```
+
+Learn more: [Flight Time Calculator](https://distancefyi.com/tools/flight-time/) · [Distance Calculator](https://distancefyi.com/)
 
 ## API Reference
 
