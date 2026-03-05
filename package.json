@@ -1,6 +1,6 @@
 {
   "name": "distancefyi",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Pure TypeScript distance engine -- Haversine great-circle distance, bearing, midpoint, travel time estimates, and unit conversions. Zero dependencies.",
   "type": "module",
   "main": "dist/index.js",
