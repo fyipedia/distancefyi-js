@@ -1,20 +1,28 @@
-# distancefyi — Demo
 Output demo.gif
-
 Set FontSize 14
 Set Width 920
-Set Height 620
+Set Height 580
 Set Shell "zsh"
 Set Theme "Catppuccin Mocha"
-Set TypingSpeed 35ms
+Set TypingSpeed 30ms
 Set Padding 20
 
-Type "cat demo.mjs"
+Type "node"
+Enter
+Sleep 1s
+
+Type "const { computeDistance, midpoint } = await import('distancefyi')"
+Enter
+Sleep 1.5s
+
+Type "computeDistance(37.5665, 126.978, 35.6762, 139.6503)"
 Enter
 Sleep 2.5s
 
-Type "node demo.mjs"
+Type "midpoint(37.5665, 126.978, 35.6762, 139.6503)"
 Enter
-Sleep 3s
+Sleep 2.5s
 
-Sleep 2s
+Type ".exit"
+Enter
+Sleep 1s
