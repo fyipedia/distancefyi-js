@@ -140,7 +140,7 @@ console.log(formatDuration(estimateWalkTime(10)));       // "2h"
 console.log(estimateWalkTime(200));                      // 0 (too far)
 ```
 
-Learn more: [Flight Time Calculator](https://distancefyi.com/tools/flight-time/) · [Distance Calculator](https://distancefyi.com/)
+Learn more: [Distance Calculator](https://distancefyi.com/)
 
 ## API Reference
 
@@ -207,9 +207,7 @@ import type { DistanceResult } from "distancefyi";
 
 ## Learn More About Distance
 
-- **Tools**: [Distance Calculator](https://distancefyi.com/) · [Flight Time](https://distancefyi.com/tools/flight-time/)
-- **Browse**: [Cities](https://distancefyi.com/city/) · [Countries](https://distancefyi.com/country/)
-- **API**: [REST API Docs](https://distancefyi.com/developers/) · [OpenAPI Spec](https://distancefyi.com/api/openapi.json)
+- **Tools**: [Distance Calculator](https://distancefyi.com/) · - **Browse**: - **API**: [REST API Docs](https://distancefyi.com/developers/) · [OpenAPI Spec](https://distancefyi.com/api/openapi.json)
 - **Python**: [PyPI Package](https://pypi.org/project/distancefyi/)
 
 ## Also Available for Python
